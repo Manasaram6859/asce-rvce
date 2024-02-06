@@ -17,57 +17,15 @@
 
 
 
-
-const path = require('path')
 const express = require('express');
-const { join, dirname } = require('path');
 const app = express();
+const port = 3000;
 
-//serve the static files
-app.use('/static',express.static('static'))
+app.use(express.static('public'));
 
-
-app.get("/", (req, res) => {
-    res
-        .status(200)
-        .sendFile(path.join(__dirname, "public", "home.html"));
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
 });
-
-app.get("/home", (req, res) => {
-    res
-        .status(200)
-        .sendFile(path.join(__dirname, "public", "home.html"));
-});
-
-app.get("/about", (req, res) => {
-    res
-        .status(200)
-        .sendFile(path.join(__dirname, "public", "about.html"));
-});
-
-
-app.get("/team", (req, res) => {
-    res
-        .status(200)
-        .sendFile(path.join(__dirname, "public", "team.html"));
-});
-
-app.get("/contactus", (req, res) => {
-    res
-        .status(200)
-        .sendFile(path.join(__dirname, "public", "contactus.html"));
-});
-
-
-
-
-const localhost = "127.0.0.1"
-const port = 8080;
-app.listen(port, () => { console.log(`The code is running at http://${localhost}:${port}`) })
-
-
-
-
 
 
 
